@@ -2,6 +2,7 @@ import express from 'express';
 import "dotenv/config";
 const app = express();
 
+app.use(express.json());
 
 import welcome from './src/middlewares/welcome.js';
 app.get('/', welcome);

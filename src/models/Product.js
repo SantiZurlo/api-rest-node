@@ -1,6 +1,6 @@
 import { db } from "./firebase.js";
 
-import { collection, getDocs, doc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc, addDoc, deleteDoc, query, where } from "firebase/firestore";
 
 const productsCollection = collection(db, "products");
 
@@ -22,6 +22,18 @@ export const getProductById = async (id) => {
         console.error(error);
     }
 };
+
+export const getProductsByCategory = async (category) => {
+    try {
+      const q = query(productsCollection, where("categories", "array-contains", category));  
+
+      const snapshot = await getDocs(q);
+      return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 
 export const createProduct = async (data) => {
     try {

@@ -2,7 +2,7 @@
 
 ## Descripción
 
-API REST para la gestión de productos desarrollada con Node.js y Express.
+Una API RESTful para la gestión de productos, autenticación de usuarios y conexión segura con Firebase Firestore. Utiliza autenticación JWT y está diseñada para ser fácil de desplegar y escalar.
 
 ## Instalacion 
 
@@ -10,7 +10,11 @@ API REST para la gestión de productos desarrollada con Node.js y Express.
 2. Instalar dependecias:
 
 ```shell 
-npm install 
+npm install express
+npm install cors
+npm install dotenv
+npm install firebase
+npm install jsonwebtoken
 ```
 
 3. Configurar variables de entorno:
@@ -101,10 +105,12 @@ npm run dev
 }
 ```
 
-### Crear un producto
+### Eliminar un producto
 
 - **DELETE** `/products/:id`
 - **Descripción:** Elimina un producto por su ID.
 - **Parámetros:**
  - `id` (path, requerido): ID del producto a eliminar.
 - **Respuesta:** 204 No content
+
+### Autor Santiago Zurlo    

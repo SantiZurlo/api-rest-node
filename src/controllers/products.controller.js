@@ -11,14 +11,14 @@ export const getAllProducts = async (req, res) => {
     res.json(products);
 };
 
-export const searchProductsByName = (req, res) => {
+export const searchProductsByName = async (req, res) => {
     const {name} = req.query; 
 
     if(!name) {
        return res.status(400).json({ error: 'Falta el parámetro name' });
     }
 
-    const products = Model.getAllProducts();
+    const products =  await Model.getAllProducts();
 
     const productsFiltered = products.filter(item => 
         item.name.toLowerCase().includes(name.toLowerCase())

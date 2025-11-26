@@ -1,8 +1,10 @@
 import express from 'express';
 import "dotenv/config";
+import cors from 'cors';
 import { verifyToken } from "./src/middlewares/verify-token.js";
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 import welcome from './src/middlewares/welcome.js';
